@@ -6,69 +6,146 @@ html, body, .stApp, .stAppViewContainer, .main, .block-container {
   line-height: 1.6;
 }
 
-/* Remove Streamlit default lines */
+/* Remove Streamlit default lines and dividers */
 hr, .stDivider, .stTabs [data-baseweb="tab-highlight"] {
   display: none !important;
   border: none !important;
 }
 
-/* === UPLOAD CARD (the visible box) === */
-.upload-card {
+/* Remove horizontal lines in card headers */
+.card-header::after,
+.card-header hr,
+.stMarkdown hr {
+  display: none !important;
+}
+
+/* === HEADER === */
+.header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.main-title {
+  font-size: 3rem; /* bigger */
+  font-weight: 700;
+  color: #111827;
+}
+
+.subtitle {
+  font-size: 1.3rem;
+  color: #6b7280;
+}
+
+/* === CARD (Heading Boxes) === */
+.card {
   background: white !important;
   border-radius: 16px !important;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15) !important;
-  padding: 2rem !important;
-  margin-bottom: 2rem !important;
-  text-align: center !important;
-  border: 1px solid #e5e7eb !important; /* subtle border to make box clear */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1) !important;
+  margin-bottom: 1.5rem !important;
+  overflow: hidden !important;
+  border: 1px solid #e5e7eb !important;
 }
 
-.upload-card h2 {
-  font-size: 1.5rem;
-  font-weight: 600;
-  margin-bottom: 0.25rem;
-  color: #1f2937;
+.card-header {
+  padding: 1.5rem 2rem !important;
+  background: #fafafa !important;
+  border-bottom: none !important; /* Remove the line */
 }
 
-.upload-card p {
-  font-size: 1rem;
-  color: #6b7280;
+.card-title {
+  font-size: 1.5rem !important;
+  font-weight: 600 !important;
+  color: #1f2937 !important;
+  margin-bottom: 0.25rem !important;
+}
+
+.card-description {
+  color: #6b7280 !important;
+  font-size: 1rem !important;
+}
+
+.card-content {
+  padding: 1.5rem 2rem !important;
+}
+
+/* === CHAT STYLES === */
+.chat-container {
+  max-height: 500px;
+  overflow-y: auto;
   margin-bottom: 1.5rem;
+  padding: 1rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  background: #fafafa;
 }
 
-/* Style uploader inside the card */
-.upload-card .stFileUploader {
-  border: 2px dashed #d1d5db !important;
-  border-radius: 12px !important;
+.chat-message {
+  margin-bottom: 1rem;
+  padding: 1rem;
+  border-radius: 12px;
+  animation: fadeIn 0.3s ease-in;
+}
+
+.user-message {
+  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+  color: white;
+  margin-left: 2rem;
+  border-bottom-right-radius: 4px;
+}
+
+.bot-message {
+  background: white;
+  color: #1f2937;
+  margin-right: 2rem;
+  border: 1px solid #e5e7eb;
+  border-bottom-left-radius: 4px;
+}
+
+.message-header {
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+  opacity: 0.8;
+}
+
+.message-content {
+  font-size: 1rem;
+  line-height: 1.6;
+  word-wrap: break-word;
+}
+
+.sources {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid #e5e7eb;
+  font-size: 0.9rem;
+  color: #6b7280;
+}
+
+/* Animation for new messages */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* === FILE UPLOADER BOX === */
+.stFileUploader {
+  border: 2px dashed #cbd5e1 !important;
+  border-radius: 14px !important;
   padding: 3rem 2rem !important;
   background: #fafafa !important;
+  text-align: center !important;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.08) !important;
 }
 
-.upload-card .stFileUploader:hover {
+.stFileUploader:hover {
   border-color: #3b82f6 !important;
   background: #f0f9ff !important;
-}
-
-
-/* === CHAT CARD === */
-.chat-card {
-  background: white;
-  border-radius: 16px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  padding: 2.5rem;
-}
-
-.chat-card h2 {
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: #1f2937;
-  margin-bottom: 0.25rem;
-}
-
-.chat-card p {
-  font-size: 1rem;
-  color: #6b7280;
-  margin-bottom: 1.25rem;
 }
 
 /* === TAB BAR === */
@@ -78,21 +155,21 @@ hr, .stDivider, .stTabs [data-baseweb="tab-highlight"] {
   gap: 1rem;
   background: white;
   padding: 1rem 1.25rem;
-  border-radius: 16px;
+  border-radius: 16px; /* curly edges */
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   margin-bottom: 2rem;
   border: none !important;
 }
 
 .stTabs [data-baseweb="tab"] {
-  font-size: 1.2rem;
+  font-size: 1.3rem;        /* bigger font */
   font-weight: 600;
   color: #4b5563;
   background: transparent;
   padding: 0.75rem 1.5rem;
-  border-radius: 12px;
+  border-radius: 12px;      /* curly edges */
   transition: all 0.2s ease-in-out;
-  border: none !important;
+  border: none !important;  /* remove underline */
 }
 
 .stTabs [data-baseweb="tab"]:hover {
@@ -105,4 +182,32 @@ hr, .stDivider, .stTabs [data-baseweb="tab-highlight"] {
   color: white !important;
   font-weight: 700;
   box-shadow: 0 3px 8px rgba(59, 130, 246, 0.4);
+}
+
+/* === CHAT INPUT STYLING === */
+.stTextInput > div > div > input {
+  border-radius: 12px !important;
+  border: 2px solid #e5e7eb !important;
+  padding: 0.75rem 1rem !important;
+  font-size: 1rem !important;
+  transition: all 0.2s ease !important;
+}
+
+.stTextInput > div > div > input:focus {
+  border-color: #3b82f6 !important;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1) !important;
+}
+
+/* === BUTTONS === */
+.stButton > button {
+  border-radius: 12px !important;
+  border: none !important;
+  padding: 0.75rem 1.5rem !important;
+  font-weight: 600 !important;
+  transition: all 0.2s ease !important;
+}
+
+.stButton > button:hover {
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15) !important;
 }

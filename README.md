@@ -62,7 +62,6 @@ Landing Page:
 ![landingPage](images/frontpage.png)
 Upload documents example:
 ![uploadexample](images/UploadExample.png)
->>>>>>> 118b984f6f278aa38cb286a3b3f1741ba94ec926
 
 ### Chat with Your Documents
 Chat Page:

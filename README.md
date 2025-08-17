@@ -1,12 +1,18 @@
-
-
-# DocRAG - Chat with Your Documents
-
+<div align="center">                                    
+<h1> DocRAG - Chat with Your Documents</h1>
+</div>
 <div align="center">
 
 ![Python](https://img.shields.io/badge/python-v3.8+-blue.svg)
 ![FastAPI](https://img.shields.io/badge/FastAPI-0.68+-green.svg)
 ![Streamlit](https://img.shields.io/badge/Streamlit-1.0+-red.svg)
+
+
+<img src="https://img.shields.io/badge/Model-Gemini%20-blue?style=for-the-badge"/>
+<img src="https://img.shields.io/badge/Made with-HuggingFace%20-yellow?style=for-the-badge"/>
+<img src="https://img.shields.io/badge/Made with-LangChain%20-green?style=for-the-badge"/>
+<img src="https://img.shields.io/badge/Made%20By-Himanshu%20Singh-red?style=for-the-badge"/>
+
 
 *A powerful RAG (Retrieval-Augmented Generation) application that allows you to chat with your documents using AI*
 
@@ -46,15 +52,38 @@
 ## 🎥 Demo
 
 ### Upload & Process Documents
+<<<<<<< HEAD
 landing page:
 ![Upload Demo](images\frontpage.png)
 upload exaple:
 ![Upload Demo](images\UploadExample.png)
+=======
+Landing Page:
+![landingPage](images/frontpage.png)
+Upload documents example:
+![uploadexample](images/UploadExample.png)
+>>>>>>> 118b984f6f278aa38cb286a3b3f1741ba94ec926
 
 ### Chat with Your Documents
-![Chat Demo](https://via.placeholder.com/800x400/f0f9ff/1d4ed8?text=Chat+Demo)
+Chat Page:
+![ChatTab](images/ChatPage.png)
+Chat Example:
+![ChatExample](images/ChatExample.png)
 
 ---
+
+```
+ ________  ________  ________  ________  ________  ________     
+|\   ___ \|\   __  \|\   ____\|\   __  \|\   __  \|\   ____\    
+\ \  \_|\ \ \  \|\  \ \  \___|\ \  \|\  \ \  \|\  \ \  \___|    
+ \ \  \ \\ \ \  \\\  \ \  \    \ \   _  _\ \   __  \ \  \  ___  
+  \ \  \_\\ \ \  \\\  \ \  \____\ \  \\  \\ \  \ \  \ \  \|\  \ 
+   \ \_______\ \_______\ \_______\ \__\\ _\\ \__\ \__\ \_______\
+    \|_______|\|_______|\|_______|\|__|\|__|\|__|\|__|\|_______|
+
+```
+
+
 
 ## 🚀 Installation
 
@@ -196,11 +225,12 @@ Visit `http://localhost:8000/docs` after starting the backend to explore the ful
 ## 📁 Project Structure
 
 ```
-docrag/
-├── 📄 main.py              # FastAPI backend server
-├── 🎨 app.py               # Streamlit frontend
-├── ⚙️ rag_pipeline.py      # RAG processing pipeline
-├── 🎭 styles.css           # Custom CSS styling
+DocRAG/
+├── 📁 files/
+│   ├── 📄 main.py          # FastAPI backend server
+│   ├── 🎨 app.py           # Streamlit frontend
+│   ├── ⚙️ rag_pipeline.py  # RAG processing pipeline
+│   └── 🎭 styles.css       # Custom CSS styling
 ├── 📋 requirements.txt     # Python dependencies
 ├── 🔐 .env                 # Environment variables
 └── 📖 README.md           # Project documentation
@@ -229,6 +259,7 @@ python-dotenv>=0.19.0    # Environment variable management
 
 ---
 
+<<<<<<< HEAD
 ## 🤝 Contributing
 
 We welcome contributions! Here's how you can help:
@@ -272,6 +303,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
+=======
+>>>>>>> 118b984f6f278aa38cb286a3b3f1741ba94ec926
 ## ⭐ Show Your Support
 
 If this project helped you, please consider giving it a ⭐ on GitHub!
@@ -280,7 +313,7 @@ If this project helped you, please consider giving it a ⭐ on GitHub!
 
 <div align="center">
 
-**Built with ❤️ using Python, FastAPI, and Streamlit**
+**Built by Himanshu Singh**
 
 [⬆️ Back to Top](#-docrag---chat-with-your-documents)
 

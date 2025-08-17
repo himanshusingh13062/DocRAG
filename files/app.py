@@ -1,21 +1,16 @@
 import streamlit as st
 import requests
 
-# Load custom CSS
-with open("styles.css") as f:
+with open("/app/files/styles.css") as f:
     st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
 
-# Page Config
 st.set_page_config(page_title="DocRAG", layout="wide")
 
-# Backend URL
-API_URL = "http://localhost:8000"   # FastAPI server from main.py
+API_URL = "http://localhost:8000"   
 
-# Initialize session state for chat history
 if "chat_history" not in st.session_state:
     st.session_state.chat_history = []
 
-# Header
 st.markdown(
     """
     <div class="header">
@@ -26,10 +21,8 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# Tabs
 tab1, tab2 = st.tabs(["Upload & Process", "Chat"])
 
-# === Upload Tab ===
 with tab1:
     st.markdown(
         """
@@ -68,7 +61,6 @@ with tab1:
 
     st.markdown("</div></div>", unsafe_allow_html=True)
 
-# === Chat Tab ===
 with tab2:
     st.markdown(
         """
@@ -83,12 +75,10 @@ with tab2:
     
     st.markdown('<div class="card-content">', unsafe_allow_html=True)
     
-    # Chat History Display
     if st.session_state.chat_history:
         st.markdown('<div class="chat-container">', unsafe_allow_html=True)
         
         for i, chat in enumerate(st.session_state.chat_history):
-            # User message
             st.markdown(
                 f"""
                 <div class="chat-message user-message">
@@ -103,7 +93,6 @@ with tab2:
                 unsafe_allow_html=True
             )
             
-            # Bot response
             st.markdown(
                 f"""
                 <div class="chat-message bot-message">
@@ -121,14 +110,12 @@ with tab2:
         
         st.markdown('</div>', unsafe_allow_html=True)
         
-        # Clear chat button
         col1, col2 = st.columns([4, 1])
         with col2:
             if st.button("🗑️ Clear Chat"):
                 st.session_state.chat_history = []
                 st.rerun()
     
-    # Chat Input Form
     with st.form("chat_form", clear_on_submit=True):
         user_input = st.text_input("Type your question here...", key="chat_input")
         submit_button = st.form_submit_button("Send 📤")
@@ -140,14 +127,12 @@ with tab2:
                 if res.status_code == 200:
                     data = res.json()
                     
-                    # Add to chat history
                     st.session_state.chat_history.append({
                         "question": user_input,
                         "response": data['response'],
                         "sources": data.get('sources', [])
                     })
                     
-                    # Rerun to show updated chat
                     st.rerun()
                     
                 else:

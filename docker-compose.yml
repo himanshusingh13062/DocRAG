@@ -1,0 +1,12 @@
+services:
+  docrag:
+    build: .
+    ports:
+      - "8501:8501"  # frotend
+      - "8000:8000"  # backend
+    environment:
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+    volumes:
+      - ./uploads:/app/uploads  # Persist uploaded files
+    restart: unless-stopped
+    container_name: docrag-app

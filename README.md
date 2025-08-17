@@ -46,7 +46,10 @@
 ## 🎥 Demo
 
 ### Upload & Process Documents
-![Upload Demo](https://via.placeholder.com/800x400/f0f9ff/3b82f6?text=Upload+Demo)
+landing page:
+![Upload Demo](images\frontpage.png)
+upload exaple:
+![Upload Demo](images\UploadExample.png)
 
 ### Chat with Your Documents
 ![Chat Demo](https://via.placeholder.com/800x400/f0f9ff/1d4ed8?text=Chat+Demo)
@@ -264,10 +267,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - 🐛 Search [existing issues](https://github.com/yourusername/docrag/issues)
 - 💬 Create a [new issue](https://github.com/yourusername/docrag/issues/new)
 
-### Want to Connect?
+### Created By?
 - 👨‍💻 **Created by**: Himanshu Singh
-- 🔗 **LinkedIn**: [Your LinkedIn Profile]
-- 📧 **Email**: your.email@example.com
 
 ---
 

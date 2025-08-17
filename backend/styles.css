@@ -1,0 +1,108 @@
+/* === BASE STYLES === */
+html, body, .stApp, .stAppViewContainer, .main, .block-container {
+  background: linear-gradient(135deg, #f0f9ff 0%, #e0e7ff 100%) !important;
+  font-family: "Segoe UI", "Inter", sans-serif !important;
+  color: #1f2937;
+  line-height: 1.6;
+}
+
+/* Remove Streamlit default lines */
+hr, .stDivider, .stTabs [data-baseweb="tab-highlight"] {
+  display: none !important;
+  border: none !important;
+}
+
+/* === UPLOAD CARD (the visible box) === */
+.upload-card {
+  background: white !important;
+  border-radius: 16px !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15) !important;
+  padding: 2rem !important;
+  margin-bottom: 2rem !important;
+  text-align: center !important;
+  border: 1px solid #e5e7eb !important; /* subtle border to make box clear */
+}
+
+.upload-card h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  color: #1f2937;
+}
+
+.upload-card p {
+  font-size: 1rem;
+  color: #6b7280;
+  margin-bottom: 1.5rem;
+}
+
+/* Style uploader inside the card */
+.upload-card .stFileUploader {
+  border: 2px dashed #d1d5db !important;
+  border-radius: 12px !important;
+  padding: 3rem 2rem !important;
+  background: #fafafa !important;
+}
+
+.upload-card .stFileUploader:hover {
+  border-color: #3b82f6 !important;
+  background: #f0f9ff !important;
+}
+
+
+/* === CHAT CARD === */
+.chat-card {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  padding: 2.5rem;
+}
+
+.chat-card h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 0.25rem;
+}
+
+.chat-card p {
+  font-size: 1rem;
+  color: #6b7280;
+  margin-bottom: 1.25rem;
+}
+
+/* === TAB BAR === */
+.stTabs [data-baseweb="tab-list"] {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  background: white;
+  padding: 1rem 1.25rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  margin-bottom: 2rem;
+  border: none !important;
+}
+
+.stTabs [data-baseweb="tab"] {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #4b5563;
+  background: transparent;
+  padding: 0.75rem 1.5rem;
+  border-radius: 12px;
+  transition: all 0.2s ease-in-out;
+  border: none !important;
+}
+
+.stTabs [data-baseweb="tab"]:hover {
+  background: #f3f4f6;
+  color: #111827;
+}
+
+.stTabs [data-baseweb="tab"][aria-selected="true"] {
+  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+  color: white !important;
+  font-weight: 700;
+  box-shadow: 0 3px 8px rgba(59, 130, 246, 0.4);
+}

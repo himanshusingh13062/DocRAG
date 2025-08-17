@@ -11,7 +11,7 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.prompts import PromptTemplate
 from langchain_core.runnables import RunnablePassthrough, RunnableLambda, RunnableParallel
 from langchain_core.output_parsers import StrOutputParser
-from langchain.document_loaders import PyPDFLoader, TextLoader
+from langchain_community.document_loaders import PyPDFLoader, TextLoader
 from langchain.docstore.document import Document
 
 load_dotenv()
@@ -20,15 +20,24 @@ class RAGPipeline:
     def __init__(self):
         # Initialize components
         self.llm = ChatGoogleGenerativeAI(
-            model="gemini-pro",
+            model="gemini-2.5-pro",
             google_api_key=os.getenv("GEMINI_API_KEY"),
             temperature=0.1
         )
         self.embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
-        self.text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
+        self.text_splitter = RecursiveCharacterTextSplitter(chunk_size=4000, chunk_overlap=900)
         self.prompt = PromptTemplate(
             input_variables=["context", "chat_history", "question"],
             template="""
+You are a helpful assistant. You are made by Hiamnshu Singh. 
+Answer based on the provided context and conversation history.
+Also explain as deeply as possible, highlighting the important portions too.
+If the content is insufficient, just say you don't know.
+But if the users ask for code, make it according to the context but if incomplete , complete yhe code on your own.
+If the context contains code, 
+reproduce it exactly as it is (keep indentation, spacing, and formatting).  
+Do not explain or modify unless explicitly asked.  
+Wrap all code inside ```language blocks.
 Answer based on context and chat history:
 
 CONTEXT: {context}

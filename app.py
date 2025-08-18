@@ -1,8 +1,13 @@
 import streamlit as st
 import requests
+import os
 
-with open("/app/files/styles.css") as f:
-    st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
+css_path = "/app/styles.css" if os.path.exists("/app/styles.css") else "styles.css"
+try:
+    with open(css_path) as f:
+        st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
+except FileNotFoundError:
+    st.warning("CSS file not found, using default styling")
 
 st.set_page_config(page_title="DocRAG", layout="wide")
 
@@ -49,13 +54,17 @@ with tab1:
             with st.spinner("Processing documents..."):
                 files = [("files", (file.name, file, file.type)) for file in uploaded_files]
                 try:
-                    res = requests.post(f"{API_URL}/upload-files/", files=files)
+                    res = requests.post(f"{API_URL}/upload-files/", files=files, timeout=300)
                     if res.status_code == 200:
                         data = res.json()
                         st.success(f"✅ Processed {len(data.get('processed_files', []))} files")
                         st.info(f"Total Chunks: {data.get('total_chunks', 0)}")
                     else:
                         st.error(f"Upload failed: {res.text}")
+                except requests.exceptions.ConnectionError:
+                    st.error("❌ Cannot connect to backend. Please wait a moment and try again.")
+                except requests.exceptions.Timeout:
+                    st.error("❌ Request timed out. Your file might be too large.")
                 except Exception as e:
                     st.error(f"Error: {e}")
 
@@ -123,7 +132,7 @@ with tab2:
     if submit_button and user_input.strip():
         with st.spinner("Thinking..."):
             try:
-                res = requests.post(f"{API_URL}/chat/", json={"message": user_input})
+                res = requests.post(f"{API_URL}/chat/", json={"message": user_input}, timeout=120)
                 if res.status_code == 200:
                     data = res.json()
                     
@@ -137,6 +146,10 @@ with tab2:
                     
                 else:
                     st.error(f"Chat request failed: {res.text}")
+            except requests.exceptions.ConnectionError:
+                st.error("❌ Cannot connect to backend. Please ensure the backend is running.")
+            except requests.exceptions.Timeout:
+                st.error("❌ Request timed out. Please try a simpler question.")
             except Exception as e:
                 st.error(f"Error: {e}")
 

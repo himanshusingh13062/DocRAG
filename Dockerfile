@@ -2,27 +2,28 @@ FROM python:3.11-slim
 
 WORKDIR /app
 
+# Install system dependencies
 RUN apt-get update && apt-get install -y \
     build-essential \
     curl \
     git \
     && rm -rf /var/lib/apt/lists/*
 
+# Copy requirements and install Python dependencies
 COPY requirements.txt .
-
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY files/ ./files/
+# Copy application files
+COPY . .
 
+# Create uploads directory
 RUN mkdir -p /app/uploads
 
-EXPOSE 8000 8501
+# Make startup script executable
+RUN chmod +x start.sh
 
-RUN echo '#!/bin/bash\n\
-echo "Starting FastAPI backend..."\n\
-cd /app && python files/main.py &\n\
-echo "Starting Streamlit frontend..."\n\
-cd /app && streamlit run files/app.py --server.port=8501 --server.address=0.0.0.0 --server.headless=true\n\
-' > start.sh && chmod +x start.sh
+# Expose ports
+EXPOSE 8501 8000
 
+# Use the startup script
 CMD ["./start.sh"]

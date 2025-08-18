@@ -52,12 +52,6 @@
 ## 🎥 Demo
 
 ### Upload & Process Documents
-<<<<<<< HEAD
-landing page:
-![Upload Demo](images\frontpage.png)
-upload exaple:
-![Upload Demo](images\UploadExample.png)
-=======
 Landing Page:
 ![landingPage](images/frontpage.png)
 Upload documents example:
